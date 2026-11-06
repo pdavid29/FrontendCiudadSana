@@ -1,5 +1,5 @@
 export const environment = {
-  apiBaseUrl: 'http://localhost:8081',
-  apiEnabled: true,
-  mapTileUrl: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  production: true,
+  apiUrl: 'https://backendciudadsana.onrender.com/api',
+  auxiliaryApiUrl: 'https://api-auxiliar-ciudadsana.onrender.com/api'
 };
