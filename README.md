@@ -1,59 +1,16 @@
-# FrontentCSana
+# Frontend web CiudadSana
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.1.
+Aplicación Angular responsive. Esta configuración local consume el backend de IntelliJ en `http://localhost:8081`, configurado en `src/environments/environment.ts`.
 
-## Development server
+La cabecera usa el nombre tipográfico Ciudad Sana y no muestra un símbolo temporal. Si se incorpora el logo institucional, guarda el archivo en `frontend/public/assets/logo-ciudad-sana.svg` y actualiza el enlace de marca en `src/app/shared/components/header/header.component.ts`.
 
-To start a local development server, run:
-
-```bash
-ng serve
+```powershell
+npm ci
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+El acceso, registro, perfil, fotografías, categorías, barrios, usuarios, estadísticas y reportes usan los servicios de CiudadSana. El registro solicita los campos de `usuario` y carga los catálogos de documento/sexo desde PostgreSQL. La creación de reportes solicita GPS, categoría, barrio y fotografía. Las imágenes se guardan en disco por el backend; sus metadatos se registran en `public.evidencia` y la ruta relativa queda en PostgreSQL.
 
-## Code scaffolding
+En el perfil se puede cargar una fotografía JPG, PNG o WebP de hasta 5 MB. El archivo se guarda en `backend/uploads/perfiles/`. Las evidencias se guardan en `backend/uploads/evidencias/`. En producción, configura un volumen persistente o almacenamiento de objetos antes de desplegar.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Para otro puerto local o una URL desplegada, cambia `apiBaseUrl` en `src/environments/environment.ts` y reconstruye. No coloques secretos en el frontend.
